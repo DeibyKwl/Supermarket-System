@@ -1,0 +1,16 @@
+{
+    "12345": {
+        "name": "Arroz",
+        "price": 12.32,
+        "section": "3F",
+        "barcode": 12345,
+        "quantity": 1
+    },
+    "213412": {
+        "name": "Arro24z",
+        "price": 12.32,
+        "section": "3F",
+        "barcode": 213412,
+        "quantity": 1
+    }
+}
