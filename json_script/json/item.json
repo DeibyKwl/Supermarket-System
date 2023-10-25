@@ -12,5 +12,12 @@
         "section": "9C",
         "barcode": 92222,
         "quantity": 10
+    },
+    "666": {
+        "name": "Water",
+        "price": 1.99,
+        "section": "3F",
+        "barcode": 666,
+        "quantity": 1
     }
 }
