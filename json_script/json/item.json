@@ -1,0 +1,16 @@
+{
+    "98652": {
+        "name": "Arroz",
+        "price": 12.32,
+        "section": "3F",
+        "barcode": 98652,
+        "quantity": 1
+    },
+    "92222": {
+        "name": "Queso",
+        "price": 50.1,
+        "section": "9C",
+        "barcode": 92222,
+        "quantity": 10
+    }
+}
