@@ -14,7 +14,7 @@ def file_checker():
 
 # Add the new data to the json_file.
 # Example of how to use it: #add_item(12345, 'Arroz', 12.32, '3F', json_data)
-def add_item(barcode, name, price, section, json_data):
+def add_item(barcode, name, price, section):
 
     new_item = {
         'name' : name,
