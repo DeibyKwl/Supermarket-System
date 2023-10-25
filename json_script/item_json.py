@@ -1,6 +1,6 @@
 import json
 
-file_path = 'item.json'
+file_path = 'json_script/json/item.json'
 
 # Code to make sure there is a json file, if not create an empty json file
 def file_checker():
@@ -58,6 +58,7 @@ def retrieve_all_items():
     return json_data
 
 # Return specific item by barcode
+# May delete this function later, since you can retrieve item by calling retrieve_all_items function, and call the specific item from there
 def retrieve_item(barcode):
     return json_data[str(barcode)]
 
@@ -67,9 +68,10 @@ json_data = file_checker()
 
 
 # UNIT TESTING
-#barcode = 98652
+barcode = 92222
 #add_item(barcode, 'Arroz', 12.32, '3F', json_data)
 #remove_item(barcode)
 #update_item(barcode, 'Queso', 50.10, '9C', 10)
 #all_items = retrieve_all_items()
 #item = retrieve_item(barcode)
+#print(all_items)
