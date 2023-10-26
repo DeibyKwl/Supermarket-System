@@ -1,4 +1,5 @@
 from json_script import item_json
+import tkinter as tk
 
 
 def add_item(all_items):
@@ -44,7 +45,9 @@ def update_item(all_items):
 def view_item(all_items):
     barcode = int(input('Enter barcode: '))
     if str(barcode) in all_items:
-        return item_json.retrieve_item(barcode)
+        #TESTING FOR GUI WITH TKINTER
+        item = item_json.retrieve_item(barcode)
+        #return item_json.retrieve_item(barcode)
 
-    elif str(barcode) not in all_items:
-        print('Barcode is not in the system!!!')
+    #elif str(barcode) not in all_items:
+        #print('Barcode is not in the system!!!')
