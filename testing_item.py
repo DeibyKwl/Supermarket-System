@@ -12,12 +12,22 @@ def choices():
 all_items = item_json.retrieve_all_items()
 
 
-def add_item():
+def add_item(all_items):
+    
     barcode = int(input('Enter barcode: '))
+    for item in all_items:
+        if barcode in all_items:
+            
+
     name = input('Enter name of the product: ')
     price = float(input('Enter price of product: '))
     section = str(input('Enter section of the product: '))
     quantity = int(input('Enter quantity of the item: '))
+
+    # TODO: make sure the price is .2f
+    # TODO: make sure the barcode is not already in the json file
+    # TODO: implement the gui for this function
+    # TODO: make sure there is no negative number
     item_json.add_item(barcode, name, price, section)
 
 choices()
@@ -25,7 +35,7 @@ word = input().lower()
 
 while word != 'q':
     if word == '1':
-        add_item()
+        add_item(all_items)
     
     choices()
     word = input().lower()
