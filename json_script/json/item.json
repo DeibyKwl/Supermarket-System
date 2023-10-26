@@ -26,12 +26,5 @@
         "section": "4F",
         "barcode": "54321",
         "quantity": 1
-    },
-    "11111": {
-        "name": "Pen",
-        "price": 12.23,
-        "section": "4A",
-        "barcode": "11111",
-        "quantity": 1
     }
 }
