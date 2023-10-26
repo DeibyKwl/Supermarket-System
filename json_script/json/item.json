@@ -26,5 +26,19 @@
         "section": "4F",
         "barcode": "54321",
         "quantity": 1
+    },
+    "11111": {
+        "name": "Gas",
+        "price": 4.89,
+        "section": "4F",
+        "barcode": "11111",
+        "quantity": 6
+    },
+    "222": {
+        "name": "hjvgyjv",
+        "price": 8967.0,
+        "section": "2f",
+        "barcode": "222",
+        "quantity": 2
     }
 }
