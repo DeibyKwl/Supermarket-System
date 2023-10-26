@@ -16,7 +16,7 @@ def choices():
 all_items = item_json.retrieve_all_items()
 
 
-choices()
+"""choices()
 word = input().lower()
 
 while word != 'q':
@@ -33,4 +33,4 @@ while word != 'q':
         print(all_items)
 
     choices()
-    word = input().lower()
+    word = input().lower()"""
