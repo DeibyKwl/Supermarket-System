@@ -1,5 +1,0 @@
-#Author: Deiby Wu
-
-
-
-
