@@ -13,6 +13,8 @@ quantity_label = None
 entry_quantity = None
 save_button = None
 create_labels_buttons = True
+# Use to calculate total cost of basket
+total_cost = 0
 
 # Retrieve all items in the json file
 all_items = item_json.retrieve_all_items()
@@ -107,7 +109,36 @@ def retrieve_item(barcode):
 
 
 
+def add_product_basket(entry_barcode, text_box, cost_box, total_cost_box):
+    
+    global total_cost
 
+    if entry_barcode.get() in all_items:
+        product = retrieve_item(entry_barcode.get())
+        
+        # Make sure the product has enough quantity
+        if product['quantity'] > 0:
+        
+            text_box.config(state=tk.NORMAL)
+            text_box.insert(tk.END, product['name'] + '\n')
+            text_box.config(state=tk.DISABLED)
+            entry_barcode.delete(0, tk.END)
+            update_item(product)
+
+            cost_box.config(state=tk.NORMAL)
+            cost_box.insert(tk.END, '$' + str(round(product['price'], 2)) + '\n')
+            cost_box.config(state=tk.DISABLED)
+
+            total_cost += product['price']
+            total_cost_box.config(state=tk.NORMAL)
+            if total_cost != 0:
+                total_cost_box.delete(1.0, tk.END)
+            total_cost_box.insert(tk.END, '$' + str(round(total_cost, 2)) + '\n')
+            total_cost_box.config(state=tk.DISABLED)
+
+    elif entry_barcode.get() not in all_items:
+        #TODO give an error message
+        entry_barcode.delete(0, tk.END)
 
 
 
@@ -132,19 +163,19 @@ def remove_item(all_items):
         print('Error, this barcode is not in the system!!!')
 
 
-def update_item(all_items):
-    barcode = int(input('Enter barcode: '))
-    if str(barcode) in all_items:
-        name = input('Enter new? name of the product: ')
+def update_item(product):
+    #barcode = int(input('Enter barcode: '))
+    #if str(barcode) in all_items:
+        #name = input('Enter new? name of the product: ')
         # TODO: make sure there is no negative number
-        price = round(float(input('Enter new? price of product: ')), 2)
-        section = str(input('Enter new? section of the product: '))
+        #price = round(float(input('Enter new? price of product: ')), 2)
+        #section = str(input('Enter new? section of the product: '))
         # TODO: make sure there is no negative number
-        quantity = int(input('Modify? quantity of the item: '))
-        item_json.update_item(barcode, name, price, section, quantity)
+        #quantity = int(input('Modify? quantity of the item: '))
+    item_json.update_item(product['barcode'], product['name'], product['price'], product['section'], product['quantity'] - 1)
 
-    elif str(barcode) not in all_items:
-        print('Error, this barcode is not in the system')
+    #elif str(barcode) not in all_items:
+    #    print('Error, this barcode is not in the system')
 
 
 def view_item(all_items):
