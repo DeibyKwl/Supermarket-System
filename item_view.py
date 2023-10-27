@@ -44,7 +44,6 @@ search_button.config(command=lambda: item_services.add_product_basket(entry_barc
 entry_barcode.bind('<Return>', lambda event: item_services.add_product_basket(entry_barcode, text_box, cost_box, total_cost_box))
 
 
-
 pay_button = tk.Button(root, text='Pay', background='green', width=20, height=5)
 pay_button.place(x=1120,y=630)
 
