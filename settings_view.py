@@ -7,6 +7,7 @@ def open_new_window():
     new_window = tk.Tk()
     new_window.title('Settings')
     new_window.geometry('1000x700')
+    new_window.resizable(False,False)
     new_window.focus_force()
 
     cancel_button = tk.Button(new_window, text='Cancel', command=new_window.destroy, width=20, height=5)
