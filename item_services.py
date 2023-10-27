@@ -112,10 +112,8 @@ def retrieve_item(barcode):
 def add_product_basket(entry_barcode, text_box, cost_box, total_cost_box):
     
     global total_cost
-
     if entry_barcode.get() in all_items:
         product = retrieve_item(entry_barcode.get())
-        
         # Make sure the product has enough quantity
         if product['quantity'] > 0:
         
