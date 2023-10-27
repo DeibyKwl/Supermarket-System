@@ -1,7 +1,7 @@
 import tkinter as tk
 from json_script import item_json
 import item_services
-import top_level_view_item
+import settings_view
 
 # Retrieve all items in the json file
 all_items = item_json.retrieve_all_items()
