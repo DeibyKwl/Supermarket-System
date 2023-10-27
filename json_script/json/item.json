@@ -1,23 +1,23 @@
 {
-    "98652": {
-        "name": "Arroz",
-        "price": 12.32,
+    "078742040370": {
+        "name": "Water",
+        "price": 2.99,
         "section": "3F",
-        "barcode": 98652,
-        "quantity": 1
+        "barcode": "078742040370",
+        "quantity": 999
     },
     "666": {
         "name": "Soda",
         "price": 1.99,
         "section": "3F",
-        "barcode": 666,
-        "quantity": 973
+        "barcode": "666",
+        "quantity": 969
     },
     "12345": {
         "name": "Glasses",
         "price": 12.92,
         "section": "1D",
-        "barcode": 12345,
+        "barcode": "12345",
         "quantity": 1
     },
     "54321": {
@@ -47,5 +47,12 @@
         "section": "3F",
         "barcode": "3465467",
         "quantity": 4
+    },
+    "071723068714": {
+        "name": "Notebook",
+        "price": 20.5,
+        "section": "1D",
+        "barcode": "071723068714",
+        "quantity": 999
     }
 }
