@@ -22,6 +22,8 @@ def add_item():
     add_item_window = tk.Tk()
     add_item_window.title('Adding Item')
     add_item_window.geometry('1000x1000')
+    add_item_window.resizable(False,False)
+    add_item_window.focus_force()
 
     barcode_label = tk.Label(add_item_window, text='Barcode')
     barcode_label.pack()
@@ -100,9 +102,8 @@ def add_item_to_json(barcode, add_item_window):
     add_item_window.destroy()
         
 
-
-
-
+def retrieve_item(barcode):
+    return item_json.retrieve_item(barcode)
 
 
 
