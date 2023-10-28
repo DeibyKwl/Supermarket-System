@@ -1,7 +1,6 @@
 from json_script import item_json
 import tkinter as tk
 
-
 # Keep references to the widgets
 name_label = None
 entry_name = None
@@ -13,12 +12,12 @@ quantity_label = None
 entry_quantity = None
 save_button = None
 create_labels_buttons = True
-# Use to calculate total cost of basket
-total_cost = 0
+
+total_cost = 0 # Use to calculate total cost of basket
+basket = {} # This will be the dictionary holding scanned items
 
 # Retrieve all items in the json file
 all_items = item_json.retrieve_all_items()
-
 
 def add_item():
     add_item_window = tk.Tk()
@@ -111,40 +110,56 @@ def retrieve_item(barcode):
 
 def add_product_basket(entry_barcode, text_box, cost_box, total_cost_box):
     
-    global total_cost
+    global total_cost, basket
     if entry_barcode.get() in all_items:
         product = retrieve_item(entry_barcode.get())
         # Make sure the product has enough quantity
         if product['quantity'] > 0:
         
             text_box.config(state=tk.NORMAL)
-            text_box.insert(tk.END, product['name'] + '\n')
+            text_box.insert('1.0', product['name'] + '\n')
+            text_box.see(tk.END)
             text_box.config(state=tk.DISABLED)
+            
             entry_barcode.delete(0, tk.END)
             update_item(product)
 
             cost_box.config(state=tk.NORMAL)
             cost_box.insert(tk.END, '$' + str(round(product['price'], 2)) + '\n')
+            cost_box.see(tk.END)
             cost_box.config(state=tk.DISABLED)
 
             total_cost += product['price']
             total_cost_box.config(state=tk.NORMAL)
-            if total_cost != 0:
+            if total_cost != 0: # Update the total_cost by deleting previous total_cost
                 total_cost_box.delete(1.0, tk.END)
             total_cost_box.insert(tk.END, '$' + str(round(total_cost, 2)) + '\n')
             total_cost_box.config(state=tk.DISABLED)
+
+            #basket[product['name']] = round(product['price'], 2)
+            
 
     elif entry_barcode.get() not in all_items:
         #TODO give an error message
         entry_barcode.delete(0, tk.END)
 
 
+def clear_product_basket(text_box, cost_box, total_cost_box):
+    global total_cost, basket
+    total_cost = 0
+    basket = {}
 
+    text_box.config(state=tk.NORMAL)
+    text_box.delete(1.0, tk.END)
+    text_box.config(state=tk.DISABLED)
 
+    cost_box.config(state=tk.NORMAL)
+    cost_box.delete(1.0, tk.END)
+    cost_box.config(state=tk.DISABLED)
 
-
-
-
+    total_cost_box.config(state=tk.NORMAL)
+    total_cost_box.delete(1.0, tk.END)
+    total_cost_box.config(state=tk.DISABLED)
 
 
 
