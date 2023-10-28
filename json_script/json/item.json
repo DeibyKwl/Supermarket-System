@@ -4,7 +4,7 @@
         "price": 2.99,
         "section": "3F",
         "barcode": "078742040370",
-        "quantity": 999
+        "quantity": 839
     },
     "666": {
         "name": "Soda",
@@ -53,6 +53,6 @@
         "price": 20.5,
         "section": "1D",
         "barcode": "071723068714",
-        "quantity": 999
+        "quantity": 595
     }
 }
