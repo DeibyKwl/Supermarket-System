@@ -1,17 +1,12 @@
 {
-    "8735612": {
-        "name": "John Doe",
-        "code": 8735612,
-        "credit": 1000
-    },
-    "8125644": {
-        "name": "John Doe",
-        "code": 8125644,
-        "credit": 111
-    },
     "302682720": {
-        "name": "John Mccallister",
-        "code": 8113244,
-        "credit": 11
+        "name": "Clinter1",
+        "code": "302682720",
+        "credit": 49933
+    },
+    "071723068714": {
+        "name": "Notebook",
+        "code": "071723068714",
+        "credit": 1000
     }
 }
