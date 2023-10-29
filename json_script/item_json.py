@@ -64,13 +64,12 @@ def retrieve_all_items():
     return json_data
 
 # Return specific item by barcode
-# May delete this function later, since you can retrieve item by calling retrieve_all_items function, and call the specific item from there
 def retrieve_item(barcode):
     global json_data
     return json_data[str(barcode)]
 
 
-file_checker()
+file_checker() # Reread the json file searching for any update
 
 
 # UNIT TESTING
