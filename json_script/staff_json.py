@@ -57,6 +57,9 @@ def retrieve_all_staffs():
     global json_data
     return json_data
 
+def retrieve_staff(code):
+    global json_data
+    return json_data[str(code)]
 
 file_checker()
 
