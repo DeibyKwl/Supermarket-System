@@ -58,6 +58,9 @@ def retrieve_all_cards():
     global json_data
     return json_data
 
+def retrieve_card(barcode):
+    global json_data
+    return json_data[str(barcode)]
 
 file_checker()
 
