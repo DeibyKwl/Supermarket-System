@@ -11,7 +11,7 @@
         "price": 1.99,
         "section": "3F",
         "barcode": "666",
-        "quantity": 969
+        "quantity": 967
     },
     "12345": {
         "name": "Glasses",
@@ -53,6 +53,13 @@
         "price": 20.5,
         "section": "1D",
         "barcode": "071723068714",
-        "quantity": 595
+        "quantity": 590
+    },
+    "079400457561": {
+        "name": "AXE Spray",
+        "price": 70.0,
+        "section": "5T",
+        "barcode": "079400457561",
+        "quantity": 100
     }
 }
