@@ -977,3 +977,85 @@ def view_card_checker(entry_barcode):
 
         entry_barcode.delete(0, tk.END)
         not_card_window.mainloop()
+
+
+
+# View all things here
+
+def view_all_items():
+
+    #TODO: Create a if-elif statement to see if there is any item.
+
+    all_items_window = tk.Tk()
+    all_items_window.title('View all items')
+    all_items_window.resizable(False,False)
+    all_items_window.focus_force()
+    
+
+
+    
+
+
+    label = tk.Label(all_items_window, text='Scan Item to view...', font=('Helvetica', 20))
+    label.place(x=55, y=150)
+
+    quit_button = tk.Button(all_items_window, text='Quit', width=20, height=5)
+    quit_button.config(command=all_items_window.destroy)
+    quit_button.pack()
+
+    all_items_window.mainloop()
+
+
+
+# Here we would determine if adding the item to the system. (TODO: Change structure)
+def view_item_checker(entry_barcode):
+    item_json.file_checker()
+    all_items = item_json.retrieve_all_items()
+    barcode = str(entry_barcode.get())
+    if barcode in all_items:
+
+        item = item_json.retrieve_item(barcode)
+
+        view_item_window = tk.Tk()
+        view_item_window.title('Viewing item in the system')
+        view_item_window.resizable(False, False)
+        view_item_window.focus_force()
+
+        name_label = tk.Label(view_item_window, text='Product name: ' + str(item['name']), font=('Helvetica', 15))
+        name_label.pack()
+
+        price_label = tk.Label(view_item_window, text='Price of product: ' + str(item['price']), font=('Helvetica', 15))
+        price_label.pack()
+
+        section_label = tk.Label(view_item_window, text='Section: ' + str(item['section']), font=('Helvetica', 15))
+        section_label.pack()
+
+        quantity_label = tk.Label(view_item_window, text='Quantity: ' + str(item['quantity']), font=('Helvetica', 15))
+        quantity_label.pack()
+
+        quit_button = tk.Button(view_item_window, text='Quit', width=15, height=4)
+        quit_button.config(command=view_item_window.destroy)
+        quit_button.pack()
+
+        entry_barcode.delete(0, tk.END)
+        view_item_window.mainloop()
+
+    elif barcode not in all_items:
+        not_item_window = tk.Tk()
+        not_item_window.title('')
+        not_item_window.geometry('300x300')
+        not_item_window.configure(background='yellow')
+        not_item_window.resizable(False, False)
+        not_item_window.focus_force()
+
+        label = tk.Label(not_item_window, text='Item not in the system', font=('Helvetica', 16))
+        label.place(x=45,y=30)
+
+        ok_button = tk.Button(not_item_window, text='OK', width=20, height=5)
+        ok_button.config(command=not_item_window.destroy)
+        ok_button.place(x=80,y=100)
+
+        not_item_window.bind('<FocusIn>', lambda event: set_focus(event, entry_barcode))
+
+        entry_barcode.delete(0, tk.END)
+        not_item_window.mainloop()
