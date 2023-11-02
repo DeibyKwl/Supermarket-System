@@ -39,7 +39,7 @@ def security_window():
     security_window.bind('<FocusIn>', lambda event: set_focus(event, entry_barcode))
     security_window.mainloop()
 
-
+# Open setting window if user is a staff member, deny otherwise
 def setting_window(entry_barcode, security_window):
 
     staff_json.file_checker()
@@ -108,7 +108,7 @@ def item_buttons(setting_window):
     item_button_view = tk.Button(setting_window, text='View Item', command=setting.view_item, width=18, height=4)
     item_button_view.place(x=70,y=370)
 
-    item_button_viewall = tk.Button(setting_window, text='View All Items', width=18, height=4)
+    item_button_viewall = tk.Button(setting_window, text='View All Items', command=setting.view_all_items, width=18, height=4)
     item_button_viewall.place(x=70,y=460)
 
 def staff_buttons(setting_window):
@@ -124,7 +124,7 @@ def staff_buttons(setting_window):
     staff_button_view = tk.Button(setting_window, text='View Staff', command=setting.view_staff, width=18, height=4)
     staff_button_view.place(x=415,y=370)
 
-    staff_button_viewall = tk.Button(setting_window, text='View All Staffs', width=18, height=4)
+    staff_button_viewall = tk.Button(setting_window, text='View All Staffs', command=setting.view_all_staffs, width=18, height=4)
     staff_button_viewall.place(x=415,y=460)
 
 def credit_buttons(setting_window):
@@ -140,7 +140,5 @@ def credit_buttons(setting_window):
     credit_button_view = tk.Button(setting_window, text='View Credit Card', command=setting.view_card, width=18, height=4)
     credit_button_view.place(x=770,y=370)
 
-    credit_button_viewall = tk.Button(setting_window, text='View All Credit Cards', width=18, height=4)
+    credit_button_viewall = tk.Button(setting_window, text='View All Credit Cards', command=setting.view_all_cards, width=18, height=4)
     credit_button_viewall.place(x=770,y=460)
-
-#setting_window()

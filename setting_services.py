@@ -981,23 +981,35 @@ def view_card_checker(entry_barcode):
 
 
 # View all things here
-
 def view_all_items():
-
-    #TODO: Create a if-elif statement to see if there is any item.
 
     all_items_window = tk.Tk()
     all_items_window.title('View all items')
     all_items_window.resizable(False,False)
     all_items_window.focus_force()
     
+    label = tk.Label(all_items_window, text='All Items', font=('Helvetica', 20))
+    label.pack()
 
+    text_box = tk.Text(all_items_window, font=("Helvetica", 20))
 
-    
+    all_items = item_json.retrieve_all_items()
 
+    for barcode in all_items:
+        text_box.insert(tk.END,'Name: ')
+        text_box.insert(tk.END, str(all_items[barcode]['name']) + '\n')
+        text_box.insert(tk.END,'Price: ')
+        text_box.insert(tk.END, str(all_items[barcode]['price']) + '\n')
+        text_box.insert(tk.END,'Section: ')
+        text_box.insert(tk.END, str(all_items[barcode]['section']) + '\n')
+        text_box.insert(tk.END,'barcode: ')
+        text_box.insert(tk.END, str(all_items[barcode]['barcode']) + '\n')
+        text_box.insert(tk.END,'Quantity: ')
+        text_box.insert(tk.END, str(all_items[barcode]['quantity']) + '\n')
+        text_box.insert(tk.END, "===========================================\n")
 
-    label = tk.Label(all_items_window, text='Scan Item to view...', font=('Helvetica', 20))
-    label.place(x=55, y=150)
+    text_box.config(state=tk.DISABLED)
+    text_box.pack()
 
     quit_button = tk.Button(all_items_window, text='Quit', width=20, height=5)
     quit_button.config(command=all_items_window.destroy)
@@ -1006,56 +1018,67 @@ def view_all_items():
     all_items_window.mainloop()
 
 
+def view_all_staffs():
 
-# Here we would determine if adding the item to the system. (TODO: Change structure)
-def view_item_checker(entry_barcode):
-    item_json.file_checker()
-    all_items = item_json.retrieve_all_items()
-    barcode = str(entry_barcode.get())
-    if barcode in all_items:
+    all_staffs_window = tk.Tk()
+    all_staffs_window.title('View all staffs')
+    all_staffs_window.resizable(False,False)
+    all_staffs_window.focus_force()
+    
+    label = tk.Label(all_staffs_window, text='All Staffs', font=('Helvetica', 20))
+    label.pack()
 
-        item = item_json.retrieve_item(barcode)
+    text_box = tk.Text(all_staffs_window, font=("Helvetica", 20))
 
-        view_item_window = tk.Tk()
-        view_item_window.title('Viewing item in the system')
-        view_item_window.resizable(False, False)
-        view_item_window.focus_force()
+    all_staffs = staff_json.retrieve_all_staffs()
 
-        name_label = tk.Label(view_item_window, text='Product name: ' + str(item['name']), font=('Helvetica', 15))
-        name_label.pack()
+    for barcode in all_staffs:
+        text_box.insert(tk.END,'Name: ')
+        text_box.insert(tk.END, str(all_staffs[barcode]['name']) + '\n')
+        text_box.insert(tk.END,'Code: ')
+        text_box.insert(tk.END, str(all_staffs[barcode]['code']) + '\n')
+        text_box.insert(tk.END, "===========================================\n")
 
-        price_label = tk.Label(view_item_window, text='Price of product: ' + str(item['price']), font=('Helvetica', 15))
-        price_label.pack()
+    text_box.config(state=tk.DISABLED)
+    text_box.pack()
 
-        section_label = tk.Label(view_item_window, text='Section: ' + str(item['section']), font=('Helvetica', 15))
-        section_label.pack()
+    quit_button = tk.Button(all_staffs_window, text='Quit', width=20, height=5)
+    quit_button.config(command=all_staffs_window.destroy)
+    quit_button.pack()
 
-        quantity_label = tk.Label(view_item_window, text='Quantity: ' + str(item['quantity']), font=('Helvetica', 15))
-        quantity_label.pack()
+    all_staffs_window.mainloop()
 
-        quit_button = tk.Button(view_item_window, text='Quit', width=15, height=4)
-        quit_button.config(command=view_item_window.destroy)
-        quit_button.pack()
+def view_all_cards():
 
-        entry_barcode.delete(0, tk.END)
-        view_item_window.mainloop()
+    all_cards_window = tk.Tk()
+    all_cards_window.title('View all credit cards')
+    all_cards_window.resizable(False,False)
+    all_cards_window.focus_force()
+    
+    label = tk.Label(all_cards_window, text='All Cards', font=('Helvetica', 20))
+    label.pack()
 
-    elif barcode not in all_items:
-        not_item_window = tk.Tk()
-        not_item_window.title('')
-        not_item_window.geometry('300x300')
-        not_item_window.configure(background='yellow')
-        not_item_window.resizable(False, False)
-        not_item_window.focus_force()
+    text_box = tk.Text(all_cards_window, font=("Helvetica", 20))
 
-        label = tk.Label(not_item_window, text='Item not in the system', font=('Helvetica', 16))
-        label.place(x=45,y=30)
+    all_cards = credit_json.retrieve_all_cards()
 
-        ok_button = tk.Button(not_item_window, text='OK', width=20, height=5)
-        ok_button.config(command=not_item_window.destroy)
-        ok_button.place(x=80,y=100)
+    for barcode in all_cards:
+        text_box.insert(tk.END,'Name: ')
+        text_box.insert(tk.END, str(all_cards[barcode]['name']) + '\n')
+        text_box.insert(tk.END,'Code: ')
+        text_box.insert(tk.END, str(all_cards[barcode]['code']) + '\n')
+        text_box.insert(tk.END,'Credit: ')
+        text_box.insert(tk.END, str(all_cards[barcode]['credit']) + '$\n')
+        text_box.insert(tk.END, "===========================================\n")
 
-        not_item_window.bind('<FocusIn>', lambda event: set_focus(event, entry_barcode))
+    text_box.config(state=tk.DISABLED)
+    text_box.pack()
 
-        entry_barcode.delete(0, tk.END)
-        not_item_window.mainloop()
+    quit_button = tk.Button(all_cards_window, text='Quit', width=20, height=5)
+    quit_button.config(command=all_cards_window.destroy)
+    quit_button.pack()
+
+    all_cards_window.mainloop()
+
+
+
