@@ -4,6 +4,12 @@ file_path = 'json_script/json/item.json'
 
 json_data = None
 
+#Known bug, if user close the window, quantity will be modified and not change back
+#Possible solution, make the window to close only if the button quit is pressed, so,
+#TODO: unable the close button from the bar.
+
+#Another bug, how does basket_num
+
 # Code to make sure there is a json file, if not create an empty json file
 def file_checker():
     global json_data
@@ -54,6 +60,7 @@ def update_item(barcode, name, price, section, quantity):
     json_data[str(barcode)]['section'] = section
     json_data[str(barcode)]['quantity'] = quantity
 
+    
     with open(file_path, 'w') as json_file:
         json.dump(json_data, json_file, indent=4)
 
