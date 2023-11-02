@@ -9,7 +9,6 @@ def set_focus(event, entry_barcode):
     if event.widget != entry_barcode:
         entry_barcode.focus_set()
 
-
 def add_item():
 
     scan_item_window = tk.Tk()
@@ -18,7 +17,6 @@ def add_item():
     scan_item_window.resizable(False, False)
     scan_item_window.focus_force()
 
-    
     label = tk.Label(scan_item_window, text='Scan Item to add...', font=('Helvetica', 20))
     label.place(x=65, y=150)
 
