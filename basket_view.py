@@ -67,6 +67,7 @@ clear_button.config(command=lambda: basket_services.clear_product_basket(text_bo
 
 pay_button = tk.Button(root, text='Pay', background='green', width=20, height=5)
 pay_button.place(x=1120,y=630)
+pay_button.config(command=lambda: basket_services.pay_product_basket(text_box, cost_box, total_cost_box))
 
 
 
