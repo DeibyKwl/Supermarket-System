@@ -248,24 +248,24 @@ def add_card_checker(entry_barcode):
         add_card_window.mainloop()
 
     elif barcode in all_cards:
-        not_staff_window = tk.Tk()
-        not_staff_window.title('')
-        not_staff_window.geometry('300x300')
-        not_staff_window.configure(background='yellow')
-        not_staff_window.resizable(False, False)
-        not_staff_window.focus_force()
+        not_card_window = tk.Tk()
+        not_card_window.title('')
+        not_card_window.geometry('300x300')
+        not_card_window.configure(background='yellow')
+        not_card_window.resizable(False, False)
+        not_card_window.focus_force()
 
-        label = tk.Label(not_staff_window, text='Card already on the system', font=('Helvetica', 16))
+        label = tk.Label(not_card_window, text='Card already on the system', font=('Helvetica', 16))
         label.place(x=45,y=30)
 
-        ok_button = tk.Button(not_staff_window, text='OK', width=20, height=5)
-        ok_button.config(command=not_staff_window.destroy)
+        ok_button = tk.Button(not_card_window, text='OK', width=20, height=5)
+        ok_button.config(command=not_card_window.destroy)
         ok_button.place(x=80,y=100)
 
-        not_staff_window.bind('<FocusIn>', lambda event: set_focus(event, entry_barcode))
+        not_card_window.bind('<FocusIn>', lambda event: set_focus(event, entry_barcode))
 
         entry_barcode.delete(0, tk.END)
-        not_staff_window.mainloop()
+        not_card_window.mainloop()
 
 
 def add_card_to_json(barcode, add_card_window, entry_name, entry_credit):
