@@ -334,7 +334,7 @@ def remove_item_checker(entry_barcode):
         not_item_window.focus_force()
 
         label = tk.Label(not_item_window, text='Sorry, Item not in the system', font=('Helvetica', 16))
-        label.place(x=45,y=30)
+        label.place(x=10,y=30)
 
         ok_button = tk.Button(not_item_window, text='OK', width=20, height=5)
         ok_button.config(command=not_item_window.destroy)
@@ -403,7 +403,7 @@ def remove_staff_checker(entry_barcode):
         not_staff_window.focus_force()
 
         label = tk.Label(not_staff_window, text='Sorry, staff not in the system', font=('Helvetica', 16))
-        label.place(x=45,y=30)
+        label.place(x=10,y=30)
 
         ok_button = tk.Button(not_staff_window, text='OK', width=20, height=5)
         ok_button.config(command=not_staff_window.destroy)
@@ -472,7 +472,7 @@ def remove_card_checker(entry_barcode):
         not_card_window.focus_force()
 
         label = tk.Label(not_card_window, text='Sorry, card not in the system', font=('Helvetica', 16))
-        label.place(x=45,y=30)
+        label.place(x=10,y=30)
 
         ok_button = tk.Button(not_card_window, text='OK', width=20, height=5)
         ok_button.config(command=not_card_window.destroy)
