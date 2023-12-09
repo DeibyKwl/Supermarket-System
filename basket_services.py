@@ -121,27 +121,28 @@ def clear_product_basket(text_box, cost_box, total_cost_box):
 
 def pay_product_basket(text_box, cost_box, total_cost_box):
     global total_cost, basket, basket_num, barcode_scanned
+    # To make sure the pay button does not activate the card prompt if the basket is empty
+    if total_cost > 0: 
+        pay_window = tk.Tk()
+        pay_window.resizable(False, False)
+        pay_window.title('Payment window')
+        pay_window.geometry('400x400')
+        pay_window.focus_force()
 
-    pay_window = tk.Tk()
-    pay_window.resizable(False, False)
-    pay_window.title('Payment window')
-    pay_window.geometry('400x400')
-    pay_window.focus_force()
+        scan_label = tk.Label(pay_window, text='Scan your card...', font=('Helvetica', 20))
+        scan_label.place(x=90, y=150)
 
-    scan_label = tk.Label(pay_window, text='Scan your card...', font=('Helvetica', 20))
-    scan_label.place(x=90, y=150)
+        entry_barcode = tk.Entry(pay_window)
+        entry_barcode.place(x=401, y=401) # Place it outside the visible are to make it seem like it is hidden and still usable
+        entry_barcode.bind('<Return>', lambda event: pay_checker(entry_barcode, pay_window, text_box, cost_box, total_cost_box))
 
-    entry_barcode = tk.Entry(pay_window)
-    entry_barcode.place(x=401, y=401) # Place it outside the visible are to make it seem like it is hidden and still usable
-    entry_barcode.bind('<Return>', lambda event: pay_checker(entry_barcode, pay_window, text_box, cost_box, total_cost_box))
+        cancel_button = tk.Button(pay_window, text='Cancel', width=20, height=5)
+        cancel_button.config(command=pay_window.destroy)
+        cancel_button.place(x=230,y=300)
 
-    cancel_button = tk.Button(pay_window, text='Cancel', width=20, height=5)
-    cancel_button.config(command=pay_window.destroy)
-    cancel_button.place(x=230,y=300)
+        pay_window.bind('<FocusIn>', lambda event: set_focus(event, entry_barcode))
 
-    pay_window.bind('<FocusIn>', lambda event: set_focus(event, entry_barcode))
-
-    pay_window.mainloop()
+        pay_window.mainloop()
 
 
 def pay_checker(entry_barcode, pay_window, text_box, cost_box, total_cost_box):
